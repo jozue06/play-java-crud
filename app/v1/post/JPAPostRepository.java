@@ -44,7 +44,7 @@ public class JPAPostRepository implements PostRepository {
     }
 
     @Override
-    public CompletionStage<Optional<PostData>> get(Long id) {
+    public CompletionStage<Optional<PostData>> get(Long id) { 
         return supplyAsync(() -> wrap(em -> Failsafe.with(circuitBreaker).get(() -> lookup(em, id))), ec);
     }
 
